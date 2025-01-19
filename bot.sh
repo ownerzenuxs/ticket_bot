@@ -15,7 +15,7 @@ fi
 # Ensure required tools are installed
 if ! command -v figlet &>/dev/null; then
   echo -e "${RED}Installing figlet for large text...${RESET}"
-  sudo apt-get update && sudo apt-get install -y figlet || {
+  sudo apt-get update && sudo apt install git -y && sudo apt-get install -y figlet || {
     echo -e "${RED}Failed to install figlet. Exiting.${RESET}"
     exit 1
   }
