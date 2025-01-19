@@ -35,13 +35,13 @@ fi
 echo -e "${CYAN}Copying files...${RESET}"
 
 # Clone repository
-echo -e "${CYAN}Cloning repository: ticket_bot${RESET}"
-if ! git ls-remote https://github.com/ownerzenuxs/ticket_bot.git &>/dev/null; then
+echo -e "${CYAN}Cloning repository: TicketBot${RESET}"
+if ! git ls-remote https://github.com/ownerzenuxs/TicketBot.git &>/dev/null; then
   echo -e "${RED}Repository not found. Please check the URL.${RESET}"
   exit 1
 fi
 
-if ! git clone https://github.com/ownerzenuxs/ticket_bot.git; then
+if ! git clone https://github.com/ownerzenuxs/TicketBot.git; then
   echo -e "${RED}Failed to clone repository. Exiting.${RESET}"
   exit 1
 fi
