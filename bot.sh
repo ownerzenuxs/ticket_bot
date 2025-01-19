@@ -7,7 +7,7 @@ function big_blue_text() {
 
 # Display "CLONING REPOSITORY" in blue and clone the GitHub repository
 big_blue_text "CLONING REPOSITORY"
-git clone https://github.com/ownerzenuxs/ticket_bot.git
+git clone https://github.com/ownerzenuxs/TicketBot.git
 
 # Change directory to the cloned TicketBot folder
 cd ticket_bot
