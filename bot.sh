@@ -21,27 +21,18 @@ if ! command -v figlet &>/dev/null; then
   }
 fi
 
-# Display logo
-echo -e "${CYAN}"
-figlet "TICKET BOT"
-echo -e "${RESET}"
-
-# Display "INSTALLING" in big green text
-echo -e "${GREEN}"
-figlet "INSTALLING"
-echo -e "${RESET}"
+# Display installation message
+echo -e "${CYAN}Starting installation process...${RESET}"
 
 # Install discord.js
-echo -e "${CYAN}Running command: npm install discord.js${RESET}"
+echo -e "${CYAN}Installing discord.js...${RESET}"
 if ! npm install discord.js; then
   echo -e "${RED}Failed to install discord.js. Exiting.${RESET}"
   exit 1
 fi
 
-# Display "COPYING FILES" in big green text
-echo -e "${GREEN}"
-figlet "COPYING FILES"
-echo -e "${RESET}"
+# Display file copying message
+echo -e "${CYAN}Copying files...${RESET}"
 
 # Clone repository
 echo -e "${CYAN}Cloning repository: ticket_bot${RESET}"
@@ -56,10 +47,6 @@ if ! git clone https://github.com/ownerzenuxs/ticket_bot.git; then
 fi
 
 # Display final instruction
-echo -e "${RED}"
-figlet "USE COMMAND"
-figlet "- node bot.js -"
-echo -e "${RESET}"
-
-# End message
-echo -e "${CYAN}Your bot is ready! Use 'node bot.js' to run the bot.${RESET}"
+echo -e "${CYAN}Your bot is ready!${RESET}"
+echo -e "${GREEN}Use the following command to run your bot:${RESET}"
+echo -e "${RED}node bot.js${RESET}"
