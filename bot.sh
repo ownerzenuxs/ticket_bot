@@ -10,12 +10,11 @@ big_blue_text "CLONING REPOSITORY"
 git clone https://github.com/ownerzenuxs/TicketBot.git
 
 # Change directory to the cloned TicketBot folder
-cd TicketBot
+cd TicketBot || { echo "Failed to change directory to TicketBot"; exit 1; }
 
 # Display "INSTALLING NPM DEPENDENCIES" in blue and install discord.js
 big_blue_text "INSTALLING NPM DEPENDENCIES"
-npm install discord.js
+npm install discord.js || { echo "Failed to install discord.js"; exit 1; }
 
 # Display completion message
 big_blue_text "DEPENDENCIES INSTALLED. READY TO RUN YOUR BOT!"
-big_blue_text "GO TO (TicketBot) and run node bot.js"
