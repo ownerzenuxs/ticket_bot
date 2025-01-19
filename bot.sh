@@ -6,10 +6,19 @@ GREEN="\033[1;32m"
 RED="\033[1;31m"
 CYAN="\033[1;36m"
 
-# Ensure required tools are installed (figlet for big text)
-if ! command -v figlet &> /dev/null; then
+# Check for Node.js and npm
+if ! command -v node &>/dev/null || ! command -v npm &>/dev/null; then
+  echo -e "${RED}Node.js and npm are required. Please install them before running this script.${RESET}"
+  exit 1
+fi
+
+# Ensure required tools are installed
+if ! command -v figlet &>/dev/null; then
   echo -e "${RED}Installing figlet for large text...${RESET}"
-  sudo apt-get update && sudo apt-get install -y figlet
+  sudo apt-get update && sudo apt-get install -y figlet || {
+    echo -e "${RED}Failed to install figlet. Exiting.${RESET}"
+    exit 1
+  }
 fi
 
 # Display logo
@@ -22,20 +31,31 @@ echo -e "${GREEN}"
 figlet "INSTALLING"
 echo -e "${RESET}"
 
-# Run the first command
+# Install discord.js
 echo -e "${CYAN}Running command: npm install discord.js${RESET}"
-npm install discord.js
+if ! npm install discord.js; then
+  echo -e "${RED}Failed to install discord.js. Exiting.${RESET}"
+  exit 1
+fi
 
 # Display "COPYING FILES" in big green text
 echo -e "${GREEN}"
 figlet "COPYING FILES"
 echo -e "${RESET}"
 
-# Run the second command
-echo -e "${CYAN}Running command: git clone https://github.com/ownerzenuxs/ticket_bot.git${RESET}"
-neofetch
+# Clone repository
+echo -e "${CYAN}Cloning repository: ticket_bot${RESET}"
+if ! git ls-remote https://github.com/ownerzenuxs/ticket_bot.git &>/dev/null; then
+  echo -e "${RED}Repository not found. Please check the URL.${RESET}"
+  exit 1
+fi
 
-# Display the final instruction in big red text
+if ! git clone https://github.com/ownerzenuxs/ticket_bot.git; then
+  echo -e "${RED}Failed to clone repository. Exiting.${RESET}"
+  exit 1
+fi
+
+# Display final instruction
 echo -e "${RED}"
 figlet "USE COMMAND"
 figlet "- node bot.js -"
